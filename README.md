@@ -1,1 +1,1 @@
-# Scaling-of-the-ouptput-for-MADS
+# Contraint scaling for mesh adaptive direct search

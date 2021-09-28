@@ -1,1 +1,1 @@
-# Contraint scaling for mesh adaptive direct search
+# Contraint scaling for mesh adaptive direct search algorithm

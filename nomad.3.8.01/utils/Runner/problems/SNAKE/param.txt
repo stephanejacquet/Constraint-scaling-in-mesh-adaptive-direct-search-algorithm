@@ -1,0 +1,7 @@
+TMP_DIR         /tmp
+display_stats   bbe ( sol ) obj
+DIMENSION       2
+x0              x0.txt
+BB_EXE          bb.exe
+BB_OUTPUT_TYPE  OBJ PB PB
+MAX_BB_EVAL     2000

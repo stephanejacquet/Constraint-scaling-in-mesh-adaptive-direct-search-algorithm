@@ -1,0 +1,23 @@
+gfortran -O  -c -o modflw96.o modflw96.f
+gfortran -O  -c -o bas5.o bas5.f
+gfortran -O  -c -o bcf5.o bcf5.f
+gfortran -O  -c -o sip5.o sip5.f
+gfortran -O  -c -o pcg2.o pcg2.f
+gfortran -O  -c -o sor5.o sor5.f
+gfortran -O  -c -o wel5.o wel5.f
+gfortran -O  -c -o riv5.o riv5.f
+gfortran -O  -c -o hfb1.o hfb1.f
+gfortran -O  -c -o drn5.o drn5.f
+gfortran -O  -c -o ghb5.o ghb5.f
+gfortran -O  -c -o evt5.o evt5.f
+gfortran -O  -c -o rch5.o rch5.f
+gfortran -O  -c -o utl5.o utl5.f
+gfortran -O  -c -o str1.o str1.f
+gfortran -O  -c -o ibs1.o ibs1.f
+gfortran -O  -c -o chd1.o chd1.f
+gfortran -O  -c -o gfd1.o gfd1.f
+gfortran -O  -c -o tlk1.o tlk1.f
+gfortran -O  -c -o de45.o de45.f
+gfortran -O  -c -o res1.o res1.f
+gfortran -O  -c -o fhb1.o fhb1.f
+gfortran  -O modflw96.o bas5.o bcf5.o sip5.o pcg2.o sor5.o wel5.o riv5.o hfb1.o drn5.o ghb5.o evt5.o rch5.o utl5.o str1.o ibs1.o chd1.o gfd1.o tlk1.o de45.o res1.o fhb1.o -O3 -o modflw96

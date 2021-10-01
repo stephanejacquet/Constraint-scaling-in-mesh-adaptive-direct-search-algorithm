@@ -1,0 +1,16 @@
+DIMENSION 17
+
+DISPLAY_STATS BBE ( sol ) OBJ
+
+TMP_DIR /tmp
+x0 x0.txt
+
+lower_bound lb.txt
+upper_bound ub.txt
+
+BB_EXE     truth_MAC.exe
+
+BB_INPUT_TYPE 0-11 I
+
+BB_OUTPUT_TYPE  PB PB PB PB PB PB PB PB PB PB PB PB OBJ
+MAX_BB_EVAL 10

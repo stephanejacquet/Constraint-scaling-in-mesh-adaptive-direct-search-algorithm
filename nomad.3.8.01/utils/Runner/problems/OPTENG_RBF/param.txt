@@ -1,0 +1,18 @@
+DIMENSION      3
+BB_EXE         bb.exe
+BB_OUTPUT_TYPE OBJ PB PB PB PB
+
+X0             x0.txt
+
+LOWER_BOUND    ( 0.05 0.25  2.00 )
+UPPER_BOUND    ( 2.00 1.30 15.00)
+
+MAX_BB_EVAL 3000
+
+# model_search no
+# model_eval_sort no
+
+
+display_stats bbe ( %4.1fsol ) %10.4fobj
+
+tmp_dir /tmp

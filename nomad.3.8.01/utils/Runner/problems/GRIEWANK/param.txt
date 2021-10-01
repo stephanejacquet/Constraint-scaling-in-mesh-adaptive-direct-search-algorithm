@@ -1,0 +1,20 @@
+DIMENSION      10
+BB_EXE         bb.exe
+BB_OUTPUT_TYPE OBJ
+
+X0             x0.txt
+
+LOWER_BOUND    * -600
+UPPER_BOUND    *  600
+
+MAX_BB_EVAL 10000
+
+model_search    yes
+model_eval_sort yes
+
+# vns_search yes
+
+display_stats bbe ( sol ) obj
+stats_file plot2.txt bbe obj
+
+tmp_dir /tmp

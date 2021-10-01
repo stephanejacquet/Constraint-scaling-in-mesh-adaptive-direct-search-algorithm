@@ -1,0 +1,108 @@
+test
+Warning: {
+	Initial mesh size for variable 3 has been arbitrarily fixed to 1.
+	 In the absence of bounds and initial values different than zero,
+	 it is recommended to explicitely provide this parameter.
+} 
+Warning: {
+	Model use is forcefully disabled.
+} 
+
+NOMAD - version 3.8.0 has been created by {
+	Charles Audet        - Ecole Polytechnique de Montreal
+	Sebastien Le Digabel - Ecole Polytechnique de Montreal
+	Christophe Tribes    - Ecole Polytechnique de Montreal
+} 
+
+The copyright of NOMAD - version 3.8.0 is owned by {
+	Sebastien Le Digabel - Ecole Polytechnique de Montreal
+	Christophe Tribes    - Ecole Polytechnique de Montreal
+} 
+
+NOMAD version 3 is a new version of NOMAD v1 and v2, it has been funded by AFOSR and Exxon Mobil.
+NOMAD v1 and v2 were created and developed by Mark Abramson, Charles Audet, Gilles Couture and John Dennis Jr., and were funded by AFOSR and Exxon Mobil.
+
+Download  : www.gerad.ca/nomad
+License   : '$NOMAD_HOME/src/lgpl.txt'
+User guide: '$NOMAD_HOME/doc/user_guide.pdf'
+Examples  : '$NOMAD_HOME/examples'
+Tools     : '$NOMAD_HOME/tools'
+
+Please report bugs to nomad@gerad.ca
+
+Seed: 0
+
+MADS run {
+
+	BBE	OBJ
+
+	   1	1.2326800000e+06
+	   3	1.0023500000e+06
+	   4	4.9714300000e+05
+	   6	1.7419500000e+05
+	  21	1.3560400000e+05
+	  86	1.0910900000e+05
+	 123	1.0795800000e+05
+	 124	1.0457100000e+05
+	 125	92026.5000000000
+	 126	57863.2000000000
+	 134	57744.4000000000
+	 135	57388.1000000000
+	 136	55962.8000000000
+	 139	52995.0000000000
+	 164	52052.1000000000
+	 168	41572.5000000000
+	 196	38648.6000000000
+	 238	31029.5000000000
+	 250	19599.0000000000
+	 251	18290.5000000000
+	 252	-42513.7000000000
+	 253	-1.1748500000e+06
+	 254	-1.9930100000e+07
+	 255	-3.2256600000e+08
+	 256	-5.1749500000e+09
+	 257	-8.2853900000e+10
+	 258	-1.3258800000e+12
+	 259	-2.1215000000e+13
+	 260	-3.3944300000e+14
+	 261	-5.4311000000e+15
+	 262	-8.6897600000e+16
+	 263	-1.3903600000e+18
+	 264	-2.2245800000e+19
+	 265	-3.5593300000e+20
+	 266	-5.6949200000e+21
+	 267	-9.1118800000e+22
+	 268	-1.4579000000e+24
+	 269	-2.3326400000e+25
+	 270	-3.7322300000e+26
+	 271	-5.9715600000e+27
+	 272	-9.5545000000e+28
+	 273	-1.5287200000e+30
+	 274	-2.4459500000e+31
+	 275	-3.9135200000e+32
+	 276	-6.2616400000e+33
+	 277	-1.0018600000e+35
+	 278	-1.6029800000e+36
+	 279	-2.5647700000e+37
+	 280	-4.1036300000e+38
+	 281	-6.5658000000e+39
+	 282	-1.0505300000e+41
+	 283	-1.6808500000e+42
+	 284	-2.6893500000e+43
+	 285	-4.3029600000e+44
+	 286	-6.8847400000e+45
+	 287	-1.1015600000e+47
+	 288	-1.7624900000e+48
+	 289	-2.8199900000e+49
+	 290	-4.5119800000e+50
+	 291	-7.2191800000e+51
+	 292	-1.1550700000e+53
+	 293	-1.8481100000e+54
+	 294	-2.9569700000e+55
+	 295	-4.7311600000e+56
+
+} end of run (mesh index limits)
+
+blackbox evaluations                     : 295
+best infeasible solution (min. violation): ( 27.3 20 90 -42 ) h=0.03075 f=18800.3
+best feasible solution                   : ( 27.3 20 -1.237940039e+28 6.189700196e+28 ) h=0 f=-4.73116e+56

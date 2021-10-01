@@ -1,0 +1,10 @@
+#!/bin/bash
+mv x0_LH_1.txt x0_LH_01.txt
+mv x0_LH_2.txt x0_LH_02.txt
+mv x0_LH_3.txt x0_LH_03.txt
+mv x0_LH_4.txt x0_LH_04.txt
+mv x0_LH_5.txt x0_LH_05.txt
+mv x0_LH_6.txt x0_LH_06.txt
+mv x0_LH_7.txt x0_LH_07.txt
+mv x0_LH_8.txt x0_LH_08.txt
+mv x0_LH_9.txt x0_LH_09.txt

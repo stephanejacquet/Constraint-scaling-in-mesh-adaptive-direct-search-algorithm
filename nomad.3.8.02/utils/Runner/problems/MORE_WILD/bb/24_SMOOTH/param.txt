@@ -1,0 +1,16 @@
+DIMENSION       12
+BB_EXE          bb.exe
+BB_OUTPUT_TYPE  OBJ
+TMP_DIR         /tmp
+x0              x0.txt
+
+DISPLAY_STATS   BBE OBJ
+DISPLAY_DEGREE  1
+
+MAX_BB_EVAL     1500
+
+#initial_mesh_size * 5.0
+
+
+# model_search    no
+# model_eval_sort no

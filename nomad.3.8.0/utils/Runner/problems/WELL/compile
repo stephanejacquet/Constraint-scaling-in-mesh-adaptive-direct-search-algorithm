@@ -1,0 +1,1 @@
+gfortran -o truth.exe feval.f costao.f costac.f linear_constraint.f location_constraint.f head_constraint.f readhead.f writewel.f

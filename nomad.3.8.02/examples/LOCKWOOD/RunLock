@@ -1,0 +1,62 @@
+#!/bin/bash
+#----shell script for executing a function evalution using Ostrich (Mattot)-- GG 04/04/11
+#
+#
+#1 = /tmp/input.tag   (the file APPS or EAGLS creates containing the iterate 
+#                      to be evaluated)
+#2 = /tmp/output.tag  (the file APPS or EAGLS expects to be returned contatining the
+#                      function value)
+#3 = tag              (the unique identifier created by the optimizer for each 
+#                      different evaluation; used in file names)
+#################################################################
+#set HERE  = `pwd\`
+inputFile=$1
+outputFile=$2
+TmpDir="${inputFile/in/tmp}"
+StartDir=`pwd`
+Ost="ostIn.txt"
+#echo "InputFile : "$inputFile
+#echo "OutputFile : "$outputFile
+#echo "TmpDir : "$TmpDir
+#echo "StartDir : "$StartDir
+
+# Copy the executables in /tmp
+if [ ! -e /tmp/Ostrich ]
+then
+  cp ./Ostrich /tmp/Ostrich
+  chmod +x Ostrich
+fi
+if [ ! -e /tmp/Bluebird ]
+then
+  cp ./Bluebird /tmp/Bluebird
+  chmod +x Bluebird
+fi
+
+# Creation of the temporary exchange directory
+mkdir -p $TmpDir
+while [ ! -d "$TmpDir" ]; do
+  sleep 0.001
+done
+
+####copy the needed file to the tag specific temporary sub directoy
+cp split.tpl $TmpDir
+cp $inputFile $TmpDir
+cd $TmpDir
+
+###STEP 1: Create the ostInput file
+cp $StartDir/SOURCES/ostInTop ./$Ost
+echo `cat $inputFile` | cut -f 2-7 -d " ">> ./$Ost
+echo "EndInitParams" >> ./$Ost
+
+####STEP 2: Calculate the function value by calling Ostrich
+../Ostrich >/dev/null
+Res="OstGcopOut.txt"
+Constr="ZoneBudget.csv"
+
+####STEP 3: Pass the result back to the optimizer
+tail -1 $Res | awk '{print $1}' >> $outputFile
+cut -d "," -f 2 $Constr >> $outputFile
+cd $StartDir
+rm -r $TmpDir
+
+

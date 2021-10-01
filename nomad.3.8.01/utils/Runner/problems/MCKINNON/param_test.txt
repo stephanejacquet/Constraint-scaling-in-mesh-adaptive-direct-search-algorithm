@@ -1,0 +1,11 @@
+DIMENSION      2 
+BB_EXE         bb.exe
+BB_OUTPUT_TYPE OBJ
+x0             x0.txt
+max_bb_eval    10000
+display_stats  bbe ( sol ) obj
+DIRECTION_TYPE ortho 2n
+OPPORTUNISTIC_EVAL false
+
+DISABLE MODELS
+DISPLAY_DEGREE 3 

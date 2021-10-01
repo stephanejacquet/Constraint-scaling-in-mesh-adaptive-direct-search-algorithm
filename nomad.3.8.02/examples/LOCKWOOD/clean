@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -r in_* out_* tmp_* 2>/dev/null

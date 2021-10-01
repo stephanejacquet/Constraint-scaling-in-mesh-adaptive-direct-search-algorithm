@@ -1,0 +1,47 @@
+DIMENSION      7              # number of variables
+
+BB_EXE         ./truth.exe         # 'truth.exe' is a program that
+BB_OUTPUT_TYPE EB OBJ          
+			      # takes in argument the name of
+                              # a text file containing 12 constraint
+                              # values (the 4 firsts are boolean), and the
+                              # value that correspond to the
+                              # objective function value (OBJ),
+                              # 'PB' and 'EB'
+                              # correspond to constraints that
+                              # are treated by the Progressive
+                              # and Extreme Barrier approaches
+                              # (all constraint-handling
+                              #  options are described in the
+                              #  detailed parameters list)
+
+X0             ( 34.794 7.587 0.441 3.0000000000 3.0000000000 5.0000000000 0.3000000000 )  # starting point
+
+
+LOWER_BOUND ( 30.0  6.0 0.28 -1.0 -1.0 1.6 0.30 )
+UPPER_BOUND ( 45.0 12.0 0.50  3.0  3.0 5.0 0.79 )
+
+MAX_BB_EVAL    10000            # the algorithm terminates when
+                              # 100 black-box evaluations have
+                              # been made
+							  
+# TMP_DIR        /tmp         # indicates a directory where
+                              # temporary files are put
+                              # (increases performance by ~100%
+                              # if you're working on a network
+                              # account and if TMP_DIR is on a
+                              # local disk)
+
+LH_SEARCH      		10000 0
+OPPORTUNISTIC_LH 	no
+
+DISPLAY_DEGREE 2 
+DISPLAY_ALL_EVAL yes
+HISTORY_FILE		history.txt
+# LH_SEARCH 100 1
+
+
+DISPLAY_STATS BBE BBO SOL # Display the number of evaluation (BBE),
+			# the current solution ( SOL ) and the objective
+
+# STATS_FILE test.txt BBE ( SOL ) OBJ

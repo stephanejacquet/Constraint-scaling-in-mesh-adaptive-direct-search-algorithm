@@ -1,0 +1,10 @@
+DIMENSION      4
+BB_EXE         bb.exe
+BB_INPUT_TYPE  ( R R R I )
+BB_OUTPUT_TYPE OBJ PB PB PB PB PB PB PB PB PB PB PB
+x0             x0.txt
+LOWER_BOUND    lb.txt
+UPPER_BOUND    ub.txt
+tmp_dir        /tmp
+max_bb_eval    4000
+display_stats  bbe ( sol ) obj

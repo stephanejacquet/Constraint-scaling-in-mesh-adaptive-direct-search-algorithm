@@ -1,0 +1,11 @@
+#################################
+# LOCKWOOD                      #
+#################################
+dimension      6
+bb_exe         "$myblock bb.exe"
+bb_output_type obj pb pb pb pb
+
+STAT_SUM_TARGET   1000000000000
+
+lower_bound    *     0
+upper_bound    *   100

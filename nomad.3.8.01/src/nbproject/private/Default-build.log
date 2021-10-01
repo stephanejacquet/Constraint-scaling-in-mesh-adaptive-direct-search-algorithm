@@ -1,0 +1,94 @@
+
+ ===== Creating the SGTELIB shared objects library and executables ===== 
+gmake[1]: entrant dans le répertoire « /home/ctribes/Development/nomad.3.8.0/ext/sgtelib/src »
+---> ../build/TrainingSet.o OK
+---> ../build/Surrogate_Parameters.o OK
+---> ../build/Surrogate_KS.o OK
+---> ../build/Surrogate_RBF.o OK
+---> ../build/Surrogate_PRS.o OK
+---> ../build/Surrogate_PRS_EDGE.o OK
+---> ../build/Surrogate_LOWESS.o OK
+---> ../build/Surrogate_Kriging.o OK
+---> ../build/Surrogate_PRS_CAT.o OK
+---> ../build/Surrogate_Ensemble.o OK
+---> ../build/Surrogate_CN.o OK
+---> ../build/Surrogate.o OK
+---> ../build/Matrix.o OK
+---> ../build/Kernel.o OK
+---> ../build/Surrogate_Utils.o OK
+---> ../build/Surrogate_Factory.o OK
+---> ../build/Tests.o OK
+---> ../build/sgtelib_help.o OK
+
+== Making ../lib/libsgtelib.so ==
+---> ../lib/libsgtelib.so OK
+---> ../build/sgtelib.o OK
+
+== Making ../bin/sgtelib.exe ==
+---> ../bin/sgtelib.exe OK
+
+gmake[1]: quittant le répertoire « /home/ctribes/Development/nomad.3.8.0/ext/sgtelib/src »
+ ===== Copy libsgtelib.so into NOMAD lib dir =====
+
+gmake[1]: entrant dans le répertoire « /home/ctribes/Development/nomad.3.8.0/src »
+
+ ===== Compiling Nomad objects ===== 
+ ---> ../builds/ObjsNoMPI/Barrier.o OK
+ ---> ../builds/ObjsNoMPI/Cache.o OK
+ ---> ../builds/ObjsNoMPI/Cache_File_Point.o OK
+ ---> ../builds/ObjsNoMPI/Cache_Point.o OK
+ ---> ../builds/ObjsNoMPI/Cache_Search.o OK
+ ---> ../builds/ObjsNoMPI/Clock.o OK
+ ---> ../builds/ObjsNoMPI/Direction.o OK
+ ---> ../builds/ObjsNoMPI/Directions.o OK
+ ---> ../builds/ObjsNoMPI/Display.o OK
+ ---> ../builds/ObjsNoMPI/Double.o OK
+ ---> ../builds/ObjsNoMPI/Eval_Point.o OK
+ ---> ../builds/ObjsNoMPI/Evaluator.o OK
+ ---> ../builds/ObjsNoMPI/Evaluator_Control.o OK
+ ---> ../builds/ObjsNoMPI/Exception.o OK
+ ---> ../builds/ObjsNoMPI/Extended_Poll.o OK
+ ---> ../builds/ObjsNoMPI/L_Curve.o OK
+ ---> ../builds/ObjsNoMPI/LH_Search.o OK
+ ---> ../builds/ObjsNoMPI/Mads.o OK
+ ---> ../builds/ObjsNoMPI/OrthogonalMesh.o OK
+ ---> ../builds/ObjsNoMPI/Model_Sorted_Point.o OK
+ ---> ../builds/ObjsNoMPI/Model_Stats.o OK
+ ---> ../builds/ObjsNoMPI/Multi_Obj_Evaluator.o OK
+ ---> ../builds/ObjsNoMPI/Parameters.o OK
+ ---> ../builds/ObjsNoMPI/Parameter_Entries.o OK
+ ---> ../builds/ObjsNoMPI/Parameter_Entry.o OK
+ ---> ../builds/ObjsNoMPI/Pareto_Front.o OK
+ ---> ../builds/ObjsNoMPI/Pareto_Point.o OK
+ ---> ../builds/ObjsNoMPI/Phase_One_Evaluator.o OK
+ ---> ../builds/ObjsNoMPI/Phase_One_Search.o OK
+ ---> ../builds/ObjsNoMPI/Point.o OK
+ ---> ../builds/ObjsNoMPI/Priority_Eval_Point.o OK
+ ---> ../builds/ObjsNoMPI/Quad_Model.o OK
+ ---> ../builds/ObjsNoMPI/Quad_Model_Evaluator.o OK
+ ---> ../builds/ObjsNoMPI/Quad_Model_Search.o OK
+ ---> ../builds/ObjsNoMPI/Random_Pickup.o OK
+ ---> ../builds/ObjsNoMPI/RNG.o OK
+ ---> ../builds/ObjsNoMPI/Sgtelib_Model_Evaluator.o OK
+ ---> ../builds/ObjsNoMPI/Sgtelib_Model_Search.o OK
+ ---> ../builds/ObjsNoMPI/Sgtelib_Model_Manager.o OK
+ ---> ../builds/ObjsNoMPI/Signature.o OK
+ ---> ../builds/ObjsNoMPI/Slave.o OK
+ ---> ../builds/ObjsNoMPI/Speculative_Search.o OK
+ ---> ../builds/ObjsNoMPI/Stats.o OK
+ ---> ../builds/ObjsNoMPI/SMesh.o OK
+ ---> ../builds/ObjsNoMPI/GMesh.o OK
+ ---> ../builds/ObjsNoMPI/XMesh.o OK
+ ---> ../builds/ObjsNoMPI/utils.o OK
+ ---> ../builds/ObjsNoMPI/Variable_Group.o OK
+ ---> ../builds/ObjsNoMPI/VNS_Search.o OK
+ ---> ../builds/ObjsNoMPI/nomad.o OK
+
+ ===== Creating the NOMAD shared objects library (no MPI) =====  
+ ---> ../lib/libnomad.so OK
+
+
+ ===== Creating the NOMAD executable release version (no MPI) ===== 
+ ---> ../bin/nomad OK
+
+gmake[1]: quittant le répertoire « /home/ctribes/Development/nomad.3.8.0/src »

@@ -1,0 +1,47 @@
+DIMENSION      4              # number of variables
+
+BB_EXE         bb.exe         # 'bb.exe' is a program that
+BB_OUTPUT_TYPE OBJ PB PB PB         # takes in argument the name of
+                              # a text file containing 5
+                              # values, and that displays 3
+                              # values that correspond to the
+                              # objective function value (OBJ),
+                              # and two constraints values g1
+                              # and g2 with g1 <= 0 and
+                              # g2 <= 0; 'PB' and 'EB'
+                              # correspond to constraints that
+                              # are treated by the Progressive
+                              # and Extreme Barrier approaches
+                              # (all constraint-handling
+                              #  options are described in the
+                              #  detailed parameters list)
+
+X0             ( 100 100 300 0 )  # starting point
+
+#LOWER_BOUND    (99 99 290 -1)         # all variables are >= -1000
+#UPPER_BOUND   (101 101 310 1)  		 # all variables are <= 1000
+
+MAX_BB_EVAL    1000            # the algorithm terminates when
+                              # 100 black-box evaluations have
+                              # been made
+							  
+# TMP_DIR        /tmp         # indicates a directory where
+                              # temporary files are put
+                              # (increases performance by ~100%
+                              # if you're working on a network
+                              # account and if TMP_DIR is on a
+                              # local disk)
+
+#LH_SEARCH 1000 0
+#OPPORTUNISTIC_LH 	no
+DISPLAY_DEGREE 2 
+DISABLE MODELS
+DIRECTION_TYPE ORTHO 2N
+#DISPLAY_ALL_EVAL yes
+#STOP_IF_FEASIBLE yes
+#HISTORY_FILE		history.txt
+
+DISPLAY_STATS BBE BBO ( SOL ) # Display the number of evaluation (BBE),
+							  # the current solution ( SOL ) and the objective
+
+# STATS_FILE test.txt BBE ( SOL ) OBJ

@@ -1,0 +1,19 @@
+DIMENSION 9
+
+DISPLAY_DEGREE 1
+DISPLAY_STATS BBE ( sol ) OBJ
+
+BB_EXE         bb_9.exe
+BB_OUTPUT_TYPE OBJ
+
+x0 x0_9.txt
+
+#LH_search 100 0
+#vns_search yes
+
+lower_bound ( 0 0 0 0 0 0 0 0 0 )
+upper_bound ( 1 1 1 1 1 1 1 1 1 )
+
+MAX_BB_EVAL 9000
+
+TMP_DIR /tmp

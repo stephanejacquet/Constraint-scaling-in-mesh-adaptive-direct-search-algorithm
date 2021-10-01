@@ -1,0 +1,15 @@
+
+DIMENSION      		8
+BB_EXE         		truth.exe
+BB_OUTPUT_TYPE 		EB OBJ
+X0             ( 54 66 86 08 29 51 32 15 )  # starting point
+LOWER_BOUND    		(53 65 85 07 28 50 31 14)
+UPPER_BOUND    		(55 67 87 09 30 52 33 16)
+
+
+LH_SEARCH      		20 0
+OPPORTUNISTIC_LH 	no
+
+HISTORY_FILE		history.txt
+
+MAX_BB_EVAL    		20

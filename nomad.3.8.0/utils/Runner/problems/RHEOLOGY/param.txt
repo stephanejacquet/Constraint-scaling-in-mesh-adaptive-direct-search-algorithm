@@ -1,0 +1,26 @@
+DIMENSION      3
+BB_EXE         bb.exe
+BB_OUTPUT_TYPE OBJ
+x0             x0.txt
+max_bb_eval    3000
+display_stats  bbe ( %13.8gsol ) %12.3obj
+
+#stats_file output.txt bbe obj
+
+#display_degree 2
+
+
+# Model search parameters:
+# MODEL_SEARCH               yes
+# MODEL_SEARCH_PROJ_TO_MESH  yes
+# MODEL_SEARCH_OPTIMISTIC    yes
+# MODEL_SEARCH_MAX_TRIAL_PTS 4
+
+# Model ordering parameters:
+# MODEL_EVAL_SORT            yes 
+# MODEL_EVAL_SORT_CAUTIOUS   yes
+
+# Model parameters:
+# MODEL_RADIUS_FACTOR        2.0
+# MODEL_MIN_Y_SIZE           N+1
+# MODEL_MAX_Y_SIZE           500

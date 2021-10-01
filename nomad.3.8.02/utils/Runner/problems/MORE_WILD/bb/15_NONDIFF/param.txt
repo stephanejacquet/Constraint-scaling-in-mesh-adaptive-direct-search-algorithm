@@ -1,0 +1,16 @@
+DIMENSION       3
+BB_EXE          bb.exe
+BB_OUTPUT_TYPE  OBJ
+TMP_DIR         /tmp
+x0              x0.txt
+
+LOWER_BOUND     * 0.0 # WARNING: not for all the problems
+
+DISPLAY_STATS   BBE OBJ
+DISPLAY_DEGREE  1
+
+MAX_BB_EVAL     1500
+
+
+# model_search    no
+# model_eval_sort no

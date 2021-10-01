@@ -1,0 +1,11 @@
+DIMENSION 250 
+DISPLAY_DEGREE 1
+DISPLAY_STATS BBE OBJ
+TMP_DIR /tmp
+x0 x0_250.txt
+lower_bound * 0.0
+upper_bound * 10.0
+
+BB_EXE     bb_250.exe
+BB_OUTPUT_TYPE  PB PB OBJ
+MAX_BB_EVAL 250000 

@@ -1,0 +1,50 @@
+#################################
+# LOCKWOOD                      #
+#################################
+dimension      6
+bb_exe         ./bb.exe
+bb_output_type obj EB
+
+STAT_SUM_TARGET   1000000000000
+
+lower_bound    *     0
+upper_bound    *   100
+
+LH_SEARCH      		10000 0
+OPPORTUNISTIC_LH 	no
+
+DISPLAY_DEGREE 1
+DISPLAY_ALL_EVAL yes
+#DIRECTION_TYPE ORTHO 2N
+#MODEL_SEARCH_PROJ_TO_MESH TRUE
+#ADD_SEED_TO_FILE_NAMES NO
+#TMP_DIR /tmp
+
+#MODEL_SEARCH SGTELIB
+#MODEL_EVAL_SORT SGTELIB
+
+
+#SGTELIB_MODEL_LAMBDA 0.0
+#SGTELIB_MODEL_FEASIBILITY C
+#SGTELIB_MODEL_EXCLUSION_AREA 0.0
+#SGTELIB_MODEL_FORMULATION FS
+
+MAX_BB_EVAL           10000
+#SGTELIB_MODEL_EVAL_NB 10000
+#BB_MAX_BLOCK_SIZE 32
+
+
+HISTORY_FILE		history.txt
+
+DISPLAY_STATS BBE BBO SOL # Display the number of evaluation (BBE),
+			# the current solution ( SOL ) and the objective
+#SGTELIB_MODEl_FILTER 2345
+
+
+# ==========================================
+X0             ( 50 50 50 50 50 50  )  # starting point
+
+#SGTELIB_MODEL_DEFINITION TYPE LOWESS SHAPE_COEF OPTIM RIDGE 0.0 KERNEL_TYPE OPTIM DEGREE 1 BUDGET 20
+
+
+

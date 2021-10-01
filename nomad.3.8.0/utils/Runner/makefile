@@ -1,0 +1,461 @@
+UNAME := $(shell uname)
+
+EXE                 = ./bin/runner 
+COMPILATOR          = mpic++
+COMPILATOR_OPTIONS  = -O2 -ansi -Wall
+L1                  = ../../lib/libnomad.so
+LIBS                = $(L1) -lc -lm
+INCLUDE             = -I../../src -I../../ext/sgtelib/src -I.
+COMPILE             = $(COMPILATOR) $(COMPILATOR_OPTIONS) $(INCLUDE) -c
+OBJS                = main.o Runner.o Algo_Parameters.o Problem.o Result.o \
+                      Arwhead.o Bdqrtic.o Biggs6.o Brownal.o Penalty1.o \
+                      Penalty2.o Powellsg.o Rheology.o Srosenbr.o Styrene.o \
+                      Tridia.o Vardim.o Woods.o ElAttar.o Evd61.o Filter.o \
+                      Goffin.o Hs78.o L1Hilb.o MxHilb.o Osborne2.o Pbc1.o \
+                      Polak2.o Shor.o Wong1.o Wong2.o B250.o B500.o Crescent.o \
+                      Disk.o G2.o Hs114.o Mad6.o Pentagon.o Mdo.o Radar7.o \
+                      Rana.o Rosenbrock.o XuWang_f1.o XuWang_f3.o XuWang_f5.o \
+                      XuWang_f8.o XuWang_f10.o XuWang_f11.o XuWang_f12.o \
+                      XuWang_f13.o XuWang_f14.o XuWang_f7.o Difficult2.o \
+                      Pigache.o Well.o Snake.o Watson12.o Trefethen.o \
+                      OptEng_RBF.o Branin.o Rastrigin.o Griewank.o More_Wild.o \
+		      Barnes_Mixed_Case11.o Barnes_Mixed_Case21.o Barnes_Mixed_Case31.o \
+		      CarSideImpact1.o CarSideImpactDC1.o G07_Mixed_Case31.o G07_Mixed_Case41.o \
+		      G9_Mixed_Case1.o G9_Mixed_CaseIC1.o \
+		      Mystery_Mixed_Case11.o Mystery_Mixed_Case21.o Mystery_Mixed_Case31.o Mystery_Mixed_Case61.o \
+		      PressureVessel_Mixed_Case1.o PressureVessel_Mixed_CaseIC1.o \
+		      Rastrigin_Mixed_Case11.o Rastrigin_Mixed_Case21.o Rastrigin_Mixed_Case31.o Rastrigin_Mixed_Case121.o Rastrigin_Mixed_Case221.o \
+		      ReinforcedConcreteBeamMOD1.o ReinforcedConcreteBeamMODDC1.o ReinforcedConcreteBeamMODIC1.o ReinforcedConcreteBeamMODIDC1.o \
+		      Rosenbrock_Mixed_Case11.o Rosenbrock_Mixed_Case21.o Rosenbrock_Mixed_Case31.o Rosenbrock_Mixed_Case121.o Rosenbrock_Mixed_Case221.o \
+		      SpeedReducerMOD_Mixed_Case1.o SpeedReducerMOD_Mixed_CaseIC1.o \
+		      SpringMOD_Mixed_Case1.o SpringMOD_Mixed_CaseIC1.o \
+		      SteppedCantileverBeamMOD1.o SteppedCantileverBeamMODDC1.o SteppedCantileverBeamMODIC1.o SteppedCantileverBeamMODIDC1.o
+	
+ifeq ($(UNAME), Linux)
+CXXFLAGS             += -Wl,-rpath-link,'../../lib' -Wl,-rpath,'$$ORIGIN/../../../lib'
+endif
+
+
+$(EXE): $(OBJS)
+	@echo "  ===== Creating runner ===== "
+	$(COMPILATOR) -o $(EXE) $(OBJS) $(LIBS) $(COMPILATOR_OPTIONS) $(CXXFLAGS)
+ifeq ($(UNAME), Darwin)
+	@install_name_tool -change libnomad.so @loader_path/../../../builds/release/lib/libnomad.so $(EXE)
+endif
+
+main.o: main.cpp Runner.o
+	$(COMPILE) main.cpp
+
+Algo_Parameters.o: Algo_Parameters.cpp Algo_Parameters.hpp Problem.o
+	$(COMPILE) Algo_Parameters.cpp
+
+Result.o: Result.cpp Result.hpp runner_defines.hpp 
+	$(COMPILE) Result.cpp
+
+Problem.o: Problem.cpp Problem.hpp runner_defines.hpp 
+	$(COMPILE) Problem.cpp
+
+Runner.o: Runner.cpp Runner.hpp 
+	$(COMPILE) Runner.cpp
+
+
+Barnes_Mixed_Case11.o: Problem.hpp problems/Barnes_Mixed_Case11/Barnes_Mixed_Case11.cpp \
+             problems/Barnes_Mixed_Case11/Barnes_Mixed_Case11.hpp
+	$(COMPILE) problems/Barnes_Mixed_Case11/Barnes_Mixed_Case11.cpp
+
+Barnes_Mixed_Case21.o: Problem.hpp problems/Barnes_Mixed_Case21/Barnes_Mixed_Case21.cpp \
+             problems/Barnes_Mixed_Case21/Barnes_Mixed_Case21.hpp
+	$(COMPILE) problems/Barnes_Mixed_Case21/Barnes_Mixed_Case21.cpp
+
+Barnes_Mixed_Case31.o: Problem.hpp problems/Barnes_Mixed_Case31/Barnes_Mixed_Case31.cpp \
+             problems/Barnes_Mixed_Case31/Barnes_Mixed_Case31.hpp
+	$(COMPILE) problems/Barnes_Mixed_Case31/Barnes_Mixed_Case31.cpp
+
+CarSideImpact1.o: Problem.hpp problems/CarSideImpact1/CarSideImpact1.cpp \
+             problems/CarSideImpact1/CarSideImpact1.hpp
+	$(COMPILE) problems/CarSideImpact1/CarSideImpact1.cpp
+
+CarSideImpactDC1.o: Problem.hpp problems/CarSideImpactDC1/CarSideImpactDC1.cpp \
+             problems/CarSideImpactDC1/CarSideImpactDC1.hpp
+	$(COMPILE) problems/CarSideImpactDC1/CarSideImpactDC1.cpp
+
+G07_Mixed_Case31.o: Problem.hpp problems/G07_Mixed_Case31/G07_Mixed_Case31.cpp \
+             problems/G07_Mixed_Case31/G07_Mixed_Case31.hpp
+	$(COMPILE) problems/G07_Mixed_Case31/G07_Mixed_Case31.cpp
+
+G07_Mixed_Case41.o: Problem.hpp problems/G07_Mixed_Case41/G07_Mixed_Case41.cpp \
+             problems/G07_Mixed_Case41/G07_Mixed_Case41.hpp
+	$(COMPILE) problems/G07_Mixed_Case41/G07_Mixed_Case41.cpp
+
+G9_Mixed_Case1.o: Problem.hpp problems/G9_Mixed_Case1/G9_Mixed_Case1.cpp \
+             problems/G9_Mixed_Case1/G9_Mixed_Case1.hpp
+	$(COMPILE) problems/G9_Mixed_Case1/G9_Mixed_Case1.cpp
+
+G9_Mixed_CaseIC1.o: Problem.hpp problems/G9_Mixed_CaseIC1/G9_Mixed_CaseIC1.cpp \
+             problems/G9_Mixed_CaseIC1/G9_Mixed_CaseIC1.hpp
+	$(COMPILE) problems/G9_Mixed_CaseIC1/G9_Mixed_CaseIC1.cpp
+
+Mystery_Mixed_Case11.o: Problem.hpp problems/Mystery_Mixed_Case11/Mystery_Mixed_Case11.cpp \
+             problems/Mystery_Mixed_Case11/Mystery_Mixed_Case11.hpp
+	$(COMPILE) problems/Mystery_Mixed_Case11/Mystery_Mixed_Case11.cpp
+
+Mystery_Mixed_Case21.o: Problem.hpp problems/Mystery_Mixed_Case21/Mystery_Mixed_Case21.cpp \
+             problems/Mystery_Mixed_Case21/Mystery_Mixed_Case21.hpp
+	$(COMPILE) problems/Mystery_Mixed_Case21/Mystery_Mixed_Case21.cpp
+
+Mystery_Mixed_Case31.o: Problem.hpp problems/Mystery_Mixed_Case31/Mystery_Mixed_Case31.cpp \
+             problems/Mystery_Mixed_Case31/Mystery_Mixed_Case31.hpp
+	$(COMPILE) problems/Mystery_Mixed_Case31/Mystery_Mixed_Case31.cpp
+
+Mystery_Mixed_Case61.o: Problem.hpp problems/Mystery_Mixed_Case61/Mystery_Mixed_Case61.cpp \
+             problems/Mystery_Mixed_Case61/Mystery_Mixed_Case61.hpp
+	$(COMPILE) problems/Mystery_Mixed_Case61/Mystery_Mixed_Case61.cpp
+
+PressureVessel_Mixed_Case1.o: Problem.hpp problems/PressureVessel_Mixed_Case1/PressureVessel_Mixed_Case1.cpp \
+             problems/PressureVessel_Mixed_Case1/PressureVessel_Mixed_Case1.hpp
+	$(COMPILE) problems/PressureVessel_Mixed_Case1/PressureVessel_Mixed_Case1.cpp
+
+PressureVessel_Mixed_CaseIC1.o: Problem.hpp problems/PressureVessel_Mixed_CaseIC1/PressureVessel_Mixed_CaseIC1.cpp \
+             problems/PressureVessel_Mixed_CaseIC1/PressureVessel_Mixed_CaseIC1.hpp
+	$(COMPILE) problems/PressureVessel_Mixed_CaseIC1/PressureVessel_Mixed_CaseIC1.cpp
+
+Rastrigin_Mixed_Case11.o: Problem.hpp problems/Rastrigin_Mixed_Case11/Rastrigin_Mixed_Case11.cpp \
+             problems/Rastrigin_Mixed_Case11/Rastrigin_Mixed_Case11.hpp
+	$(COMPILE) problems/Rastrigin_Mixed_Case11/Rastrigin_Mixed_Case11.cpp
+
+Rastrigin_Mixed_Case21.o: Problem.hpp problems/Rastrigin_Mixed_Case21/Rastrigin_Mixed_Case21.cpp \
+             problems/Rastrigin_Mixed_Case21/Rastrigin_Mixed_Case21.hpp
+	$(COMPILE) problems/Rastrigin_Mixed_Case21/Rastrigin_Mixed_Case21.cpp
+
+Rastrigin_Mixed_Case31.o: Problem.hpp problems/Rastrigin_Mixed_Case31/Rastrigin_Mixed_Case31.cpp \
+             problems/Rastrigin_Mixed_Case31/Rastrigin_Mixed_Case31.hpp
+	$(COMPILE) problems/Rastrigin_Mixed_Case31/Rastrigin_Mixed_Case31.cpp
+
+Rastrigin_Mixed_Case121.o: Problem.hpp problems/Rastrigin_Mixed_Case121/Rastrigin_Mixed_Case121.cpp \
+             problems/Rastrigin_Mixed_Case121/Rastrigin_Mixed_Case121.hpp
+	$(COMPILE) problems/Rastrigin_Mixed_Case121/Rastrigin_Mixed_Case121.cpp
+
+Rastrigin_Mixed_Case221.o: Problem.hpp problems/Rastrigin_Mixed_Case221/Rastrigin_Mixed_Case221.cpp \
+             problems/Rastrigin_Mixed_Case221/Rastrigin_Mixed_Case221.hpp
+	$(COMPILE) problems/Rastrigin_Mixed_Case221/Rastrigin_Mixed_Case221.cpp
+
+ReinforcedConcreteBeamMOD1.o: Problem.hpp problems/ReinforcedConcreteBeamMOD1/ReinforcedConcreteBeamMOD1.cpp \
+             problems/ReinforcedConcreteBeamMOD1/ReinforcedConcreteBeamMOD1.hpp
+	$(COMPILE) problems/ReinforcedConcreteBeamMOD1/ReinforcedConcreteBeamMOD1.cpp
+
+ReinforcedConcreteBeamMODDC1.o: Problem.hpp problems/ReinforcedConcreteBeamMODDC1/ReinforcedConcreteBeamMODDC1.cpp \
+             problems/ReinforcedConcreteBeamMODDC1/ReinforcedConcreteBeamMODDC1.hpp
+	$(COMPILE) problems/ReinforcedConcreteBeamMODDC1/ReinforcedConcreteBeamMODDC1.cpp
+
+ReinforcedConcreteBeamMODIC1.o: Problem.hpp problems/ReinforcedConcreteBeamMODIC1/ReinforcedConcreteBeamMODIC1.cpp \
+             problems/ReinforcedConcreteBeamMODIC1/ReinforcedConcreteBeamMODIC1.hpp
+	$(COMPILE) problems/ReinforcedConcreteBeamMODIC1/ReinforcedConcreteBeamMODIC1.cpp
+
+ReinforcedConcreteBeamMODIDC1.o: Problem.hpp problems/ReinforcedConcreteBeamMODIDC1/ReinforcedConcreteBeamMODIDC1.cpp \
+             problems/ReinforcedConcreteBeamMODIDC1/ReinforcedConcreteBeamMODIDC1.hpp
+	$(COMPILE) problems/ReinforcedConcreteBeamMODIDC1/ReinforcedConcreteBeamMODIDC1.cpp
+
+Rosenbrock_Mixed_Case11.o: Problem.hpp problems/Rosenbrock_Mixed_Case11/Rosenbrock_Mixed_Case11.cpp \
+             problems/Rosenbrock_Mixed_Case11/Rosenbrock_Mixed_Case11.hpp
+	$(COMPILE) problems/Rosenbrock_Mixed_Case11/Rosenbrock_Mixed_Case11.cpp
+
+Rosenbrock_Mixed_Case21.o: Problem.hpp problems/Rosenbrock_Mixed_Case21/Rosenbrock_Mixed_Case21.cpp \
+             problems/Rosenbrock_Mixed_Case21/Rosenbrock_Mixed_Case21.hpp
+	$(COMPILE) problems/Rosenbrock_Mixed_Case21/Rosenbrock_Mixed_Case21.cpp
+
+Rosenbrock_Mixed_Case31.o: Problem.hpp problems/Rosenbrock_Mixed_Case31/Rosenbrock_Mixed_Case31.cpp \
+             problems/Rosenbrock_Mixed_Case31/Rosenbrock_Mixed_Case31.hpp
+	$(COMPILE) problems/Rosenbrock_Mixed_Case31/Rosenbrock_Mixed_Case31.cpp
+
+Rosenbrock_Mixed_Case121.o: Problem.hpp problems/Rosenbrock_Mixed_Case121/Rosenbrock_Mixed_Case121.cpp \
+             problems/Rosenbrock_Mixed_Case121/Rosenbrock_Mixed_Case121.hpp
+	$(COMPILE) problems/Rosenbrock_Mixed_Case121/Rosenbrock_Mixed_Case121.cpp
+
+Rosenbrock_Mixed_Case221.o: Problem.hpp problems/Rosenbrock_Mixed_Case221/Rosenbrock_Mixed_Case221.cpp \
+             problems/Rosenbrock_Mixed_Case221/Rosenbrock_Mixed_Case221.hpp
+	$(COMPILE) problems/Rosenbrock_Mixed_Case221/Rosenbrock_Mixed_Case221.cpp
+
+SpeedReducerMOD_Mixed_Case1.o: Problem.hpp problems/SpeedReducerMOD_Mixed_Case1/SpeedReducerMOD_Mixed_Case1.cpp \
+             problems/SpeedReducerMOD_Mixed_Case1/SpeedReducerMOD_Mixed_Case1.hpp
+	$(COMPILE) problems/SpeedReducerMOD_Mixed_Case1/SpeedReducerMOD_Mixed_Case1.cpp
+
+SpeedReducerMOD_Mixed_CaseIC1.o: Problem.hpp problems/SpeedReducerMOD_Mixed_CaseIC1/SpeedReducerMOD_Mixed_CaseIC1.cpp \
+             problems/SpeedReducerMOD_Mixed_CaseIC1/SpeedReducerMOD_Mixed_CaseIC1.hpp
+	$(COMPILE) problems/SpeedReducerMOD_Mixed_CaseIC1/SpeedReducerMOD_Mixed_CaseIC1.cpp
+
+SpringMOD_Mixed_Case1.o: Problem.hpp problems/SpringMOD_Mixed_Case1/SpringMOD_Mixed_Case1.cpp \
+             problems/SpringMOD_Mixed_Case1/SpringMOD_Mixed_Case1.hpp
+	$(COMPILE) problems/SpringMOD_Mixed_Case1/SpringMOD_Mixed_Case1.cpp
+
+SpringMOD_Mixed_CaseIC1.o: Problem.hpp problems/SpringMOD_Mixed_CaseIC1/SpringMOD_Mixed_CaseIC1.cpp \
+             problems/SpringMOD_Mixed_CaseIC1/SpringMOD_Mixed_CaseIC1.hpp
+	$(COMPILE) problems/SpringMOD_Mixed_CaseIC1/SpringMOD_Mixed_CaseIC1.cpp
+
+SteppedCantileverBeamMOD1.o: Problem.hpp problems/SteppedCantileverBeamMOD1/SteppedCantileverBeamMOD1.cpp \
+             problems/SteppedCantileverBeamMOD1/SteppedCantileverBeamMOD1.hpp
+	$(COMPILE) problems/SteppedCantileverBeamMOD1/SteppedCantileverBeamMOD1.cpp
+
+SteppedCantileverBeamMODDC1.o: Problem.hpp problems/SteppedCantileverBeamMODDC1/SteppedCantileverBeamMODDC1.cpp \
+             problems/SteppedCantileverBeamMODDC1/SteppedCantileverBeamMODDC1.hpp
+	$(COMPILE) problems/SteppedCantileverBeamMODDC1/SteppedCantileverBeamMODDC1.cpp
+
+SteppedCantileverBeamMODIC1.o: Problem.hpp problems/SteppedCantileverBeamMODIC1/SteppedCantileverBeamMODIC1.cpp \
+             problems/SteppedCantileverBeamMODIC1/SteppedCantileverBeamMODIC1.hpp
+	$(COMPILE) problems/SteppedCantileverBeamMODIC1/SteppedCantileverBeamMODIC1.cpp
+
+SteppedCantileverBeamMODIDC1.o: Problem.hpp problems/SteppedCantileverBeamMODIDC1/SteppedCantileverBeamMODIDC1.cpp \
+             problems/SteppedCantileverBeamMODIDC1/SteppedCantileverBeamMODIDC1.hpp
+	$(COMPILE) problems/SteppedCantileverBeamMODIDC1/SteppedCantileverBeamMODIDC1.cpp
+
+
+More_Wild.o: Problem.hpp problems/MORE_WILD/More_Wild.cpp \
+             problems/MORE_WILD/More_Wild.hpp
+	$(COMPILE) problems/MORE_WILD/More_Wild.cpp
+
+Griewank.o: Problem.hpp problems/GRIEWANK/Griewank.cpp \
+             problems/GRIEWANK/Griewank.hpp 
+	$(COMPILE) problems/GRIEWANK/Griewank.cpp
+
+Griewank2.o: Problem.hpp problems/GRIEWANK2/Griewank.cpp \
+             problems/GRIEWANK2/Griewank.hpp 
+	$(COMPILE) problems/GRIEWANK2/Griewank.cpp
+
+Rastrigin.o: Problem.hpp problems/RASTRIGIN/Rastrigin.cpp \
+             problems/RASTRIGIN/Rastrigin.hpp 
+	$(COMPILE) problems/RASTRIGIN/Rastrigin.cpp
+
+Branin.o: Problem.hpp problems/BRANIN/Branin.cpp \
+             problems/BRANIN/Branin.hpp
+	$(COMPILE) problems/BRANIN/Branin.cpp
+
+Radar7.o: Problem.hpp problems/RADAR7/Radar7.cpp \
+             problems/RADAR7/Radar7.hpp
+	$(COMPILE) problems/RADAR7/Radar7.cpp
+
+OptEng_RBF.o: Problem.hpp problems/OPTENG_RBF/OptEng_RBF.cpp \
+             problems/OPTENG_RBF/OptEng_RBF.hpp 
+	$(COMPILE) problems/OPTENG_RBF/OptEng_RBF.cpp
+
+Trefethen.o: Problem.hpp problems/TREFETHEN/Trefethen.cpp \
+             problems/TREFETHEN/Trefethen.hpp
+	$(COMPILE) problems/TREFETHEN/Trefethen.cpp
+
+Watson12.o: Problem.hpp problems/WATSON12/Watson12.cpp \
+            problems/WATSON12/Watson12.hpp 
+	$(COMPILE) problems/WATSON12/Watson12.cpp
+
+Snake.o: Problem.hpp problems/SNAKE/Snake.cpp \
+         problems/SNAKE/Snake.hpp
+	$(COMPILE) problems/SNAKE/Snake.cpp
+
+Well.o: Problem.hpp problems/WELL/Well.cpp \
+        problems/WELL/Well.hpp 
+	$(COMPILE) problems/WELL/Well.cpp
+
+Pigache.o: Problem.hpp problems/PIGACHE/Pigache.cpp \
+           problems/PIGACHE/Pigache.hpp
+	$(COMPILE) problems/PIGACHE/Pigache.cpp
+
+Difficult2.o: Problem.hpp problems/DIFFICULT2/Difficult2.cpp \
+              problems/DIFFICULT2/Difficult2.hpp
+	$(COMPILE) problems/DIFFICULT2/Difficult2.cpp
+
+XuWang_f14.o: Problem.hpp problems/XUWANG_F14/XuWang_f14.cpp \
+              problems/XUWANG_F14/XuWang_f14.hpp
+	$(COMPILE) problems/XUWANG_F14/XuWang_f14.cpp
+
+XuWang_f13.o: Problem.hpp problems/XUWANG_F13/XuWang_f13.cpp \
+              problems/XUWANG_F13/XuWang_f13.hpp
+	$(COMPILE) problems/XUWANG_F13/XuWang_f13.cpp
+
+XuWang_f12.o: Problem.hpp problems/XUWANG_F12/XuWang_f12.cpp \
+              problems/XUWANG_F12/XuWang_f12.hpp
+	$(COMPILE) problems/XUWANG_F12/XuWang_f12.cpp
+
+XuWang_f11.o: Problem.hpp problems/XUWANG_F11/XuWang_f11.cpp \
+              problems/XUWANG_F11/XuWang_f11.hpp
+	$(COMPILE) problems/XUWANG_F11/XuWang_f11.cpp
+
+XuWang_f10.o: Problem.hpp problems/XUWANG_F10/XuWang_f10.cpp \
+              problems/XUWANG_F10/XuWang_f10.hpp
+	$(COMPILE) problems/XUWANG_F10/XuWang_f10.cpp
+
+XuWang_f7.o: Problem.hpp problems/XUWANG_F7/XuWang_f7.cpp \
+             problems/XUWANG_F7/XuWang_f7.hpp 
+	$(COMPILE) problems/XUWANG_F7/XuWang_f7.cpp
+
+XuWang_f8.o: Problem.hpp problems/XUWANG_F8/XuWang_f8.cpp \
+             problems/XUWANG_F8/XuWang_f8.hpp
+	$(COMPILE) problems/XUWANG_F8/XuWang_f8.cpp
+
+XuWang_f5.o: Problem.hpp problems/XUWANG_F5/XuWang_f5.cpp \
+             problems/XUWANG_F5/XuWang_f5.hpp
+	$(COMPILE) problems/XUWANG_F5/XuWang_f5.cpp
+
+XuWang_f3.o: Problem.hpp problems/XUWANG_F3/XuWang_f3.cpp \
+             problems/XUWANG_F3/XuWang_f3.hpp
+	$(COMPILE) problems/XUWANG_F3/XuWang_f3.cpp
+
+XuWang_f1.o: Problem.hpp problems/XUWANG_F1/XuWang_f1.cpp \
+             problems/XUWANG_F1/XuWang_f1.hpp
+	$(COMPILE) problems/XUWANG_F1/XuWang_f1.cpp
+
+Rosenbrock.o: Problem.hpp problems/ROSENBROCK/Rosenbrock.cpp \
+              problems/ROSENBROCK/Rosenbrock.hpp
+	$(COMPILE) problems/ROSENBROCK/Rosenbrock.cpp
+
+Rana.o: Problem.hpp problems/RANA/Rana.cpp \
+        problems/RANA/Rana.hpp
+	$(COMPILE) problems/RANA/Rana.cpp
+
+Mdo.o: Problem.hpp problems/MDO/Mdo.cpp \
+       problems/MDO/Mdo.hpp
+	$(COMPILE) problems/MDO/Mdo.cpp
+
+B250.o: Problem.hpp problems/B250/B250.cpp \
+        problems/B250/B250.hpp
+	$(COMPILE) problems/B250/B250.cpp
+
+B500.o: Problem.hpp problems/B500/B500.cpp \
+        problems/B500/B500.hpp
+	$(COMPILE) problems/B500/B500.cpp
+
+Crescent.o: Problem.hpp problems/CRESCENT/Crescent.cpp \
+            problems/CRESCENT/Crescent.hpp
+	$(COMPILE) problems/CRESCENT/Crescent.cpp
+
+Disk.o: Problem.hpp problems/DISK/Disk.cpp \
+        problems/DISK/Disk.hpp 
+	$(COMPILE) problems/DISK/Disk.cpp
+
+G2.o: Problem.hpp problems/G2/G2.cpp \
+      problems/G2/G2.hpp 
+	$(COMPILE) problems/G2/G2.cpp
+
+Hs114.o: Problem.hpp problems/HS114/Hs114.cpp \
+         problems/HS114/Hs114.hpp
+	$(COMPILE) problems/HS114/Hs114.cpp
+
+Mad6.o: Problem.hpp problems/MAD6/Mad6.cpp \
+        problems/MAD6/Mad6.hpp
+	$(COMPILE) problems/MAD6/Mad6.cpp
+
+Pentagon.o: Problem.hpp problems/PENTAGON/Pentagon.cpp \
+            problems/PENTAGON/Pentagon.hpp
+	$(COMPILE) problems/PENTAGON/Pentagon.cpp
+
+Goffin.o: Problem.hpp problems/GOFFIN/Goffin.cpp \
+          problems/GOFFIN/Goffin.hpp
+	$(COMPILE) problems/GOFFIN/Goffin.cpp
+
+Hs78.o: Problem.hpp problems/HS78/Hs78.cpp \
+        problems/HS78/Hs78.hpp
+	$(COMPILE) problems/HS78/Hs78.cpp
+
+L1Hilb.o: Problem.hpp problems/L1HILB/L1Hilb.cpp \
+          problems/L1HILB/L1Hilb.hpp
+	$(COMPILE) problems/L1HILB/L1Hilb.cpp
+
+MxHilb.o: Problem.hpp problems/MXHILB/MxHilb.cpp \
+          problems/MXHILB/MxHilb.hpp
+	$(COMPILE) problems/MXHILB/MxHilb.cpp
+
+Osborne2.o: Problem.hpp problems/OSBORNE2/Osborne2.cpp \
+            problems/OSBORNE2/Osborne2.hpp
+	$(COMPILE) problems/OSBORNE2/Osborne2.cpp
+
+Pbc1.o: Problem.hpp problems/PBC1/Pbc1.cpp \
+        problems/PBC1/Pbc1.hpp
+	$(COMPILE) problems/PBC1/Pbc1.cpp
+
+Polak2.o: Problem.hpp problems/POLAK2/Polak2.cpp \
+          problems/POLAK2/Polak2.hpp
+	$(COMPILE) problems/POLAK2/Polak2.cpp
+
+Shor.o: Problem.hpp problems/SHOR/Shor.cpp \
+        problems/SHOR/Shor.hpp 
+	$(COMPILE) problems/SHOR/Shor.cpp
+
+Wong1.o: Problem.hpp problems/WONG1/Wong1.cpp \
+         problems/WONG1/Wong1.hpp
+	$(COMPILE) problems/WONG1/Wong1.cpp
+
+Wong2.o: Problem.hpp problems/WONG2/Wong2.cpp \
+         problems/WONG2/Wong2.hpp
+	$(COMPILE) problems/WONG2/Wong2.cpp
+
+Filter.o: Problem.hpp problems/FILTER/Filter.cpp \
+          problems/FILTER/Filter.hpp
+	$(COMPILE) problems/FILTER/Filter.cpp
+
+Evd61.o: Problem.hpp problems/EVD61/Evd61.cpp \
+         problems/EVD61/Evd61.hpp
+	$(COMPILE) problems/EVD61/Evd61.cpp
+
+ElAttar.o: Problem.hpp problems/ELATTAR/ElAttar.cpp \
+           problems/ELATTAR/ElAttar.hpp
+	$(COMPILE) problems/ELATTAR/ElAttar.cpp
+
+Arwhead.o: Problem.hpp problems/ARWHEAD/Arwhead.cpp \
+           problems/ARWHEAD/Arwhead.hpp
+	$(COMPILE) problems/ARWHEAD/Arwhead.cpp
+
+Biggs6.o: Problem.hpp problems/BIGGS6/Biggs6.cpp \
+          problems/BIGGS6/Biggs6.hpp Problem.o
+	$(COMPILE) problems/BIGGS6/Biggs6.cpp
+
+Bdqrtic.o: Problem.hpp problems/BDQRTIC/Bdqrtic.cpp \
+           problems/BDQRTIC/Bdqrtic.hpp Problem.o
+	$(COMPILE) problems/BDQRTIC/Bdqrtic.cpp
+
+Brownal.o: Problem.hpp problems/BROWNAL/Brownal.cpp \
+           problems/BROWNAL/Brownal.hpp Problem.o
+	$(COMPILE) problems/BROWNAL/Brownal.cpp
+
+Penalty1.o: Problem.hpp problems/PENALTY1/Penalty1.cpp \
+            problems/PENALTY1/Penalty1.hpp Problem.o
+	$(COMPILE) problems/PENALTY1/Penalty1.cpp
+
+Penalty2.o: Problem.hpp problems/PENALTY2/Penalty2.cpp \
+            problems/PENALTY2/Penalty2.hpp Problem.o
+	$(COMPILE) problems/PENALTY2/Penalty2.cpp
+
+Powellsg.o: Problem.hpp problems/POWELLSG/Powellsg.cpp \
+            problems/POWELLSG/Powellsg.hpp Problem.o
+	$(COMPILE) problems/POWELLSG/Powellsg.cpp
+
+Rheology.o: Problem.hpp problems/RHEOLOGY/Rheology.cpp \
+            problems/RHEOLOGY/Rheology.hpp Problem.o
+	$(COMPILE) problems/RHEOLOGY/Rheology.cpp
+
+Srosenbr.o: Problem.hpp problems/SROSENBR/Srosenbr.cpp \
+            problems/SROSENBR/Srosenbr.hpp Problem.o
+	$(COMPILE) problems/SROSENBR/Srosenbr.cpp
+
+Styrene.o: problems/STYRENE/Styrene.cpp \
+           problems/STYRENE/Styrene.hpp Problem.o
+	$(COMPILE) problems/STYRENE/Styrene.cpp
+
+Tridia.o: Problem.hpp problems/TRIDIA/Tridia.cpp \
+          problems/TRIDIA/Tridia.hpp Problem.o
+	$(COMPILE) problems/TRIDIA/Tridia.cpp
+
+Vardim.o: Problem.hpp problems/VARDIM/Vardim.cpp \
+          problems/VARDIM/Vardim.hpp Problem.o
+	$(COMPILE) problems/VARDIM/Vardim.cpp
+
+Woods.o: Problem.hpp problems/WOODS/Woods.cpp \
+         problems/WOODS/Woods.hpp Problem.o
+	$(COMPILE) problems/WOODS/Woods.cpp
+
+clean:
+	@echo "   cleaning obj files"
+	@rm -f $(OBJS)
+
+del:
+	@echo "   cleaning trash files"
+	@rm -f core *~
+	@echo "   cleaning obj files"
+	@rm -f $(OBJS)
+	@echo "   cleaning exe file"
+	@rm -f $(EXE)

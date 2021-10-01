@@ -1,0 +1,40 @@
+date
+ANY_PROBLEM
+RUNNER 2.11
+NOMAD 3.8.Dev
+
+version 3.8.Dev, no models + Gmesh
+
+max_bb_eval -1
+x0 -
+VNS_search 0 -
+LH_search -1 -1 1
+opp_eval 1
+dir_type ORTHO-MADS N+1 NEG
+rel_initial_mesh_size -
+abs_initial_mesh_size -
+initial_mesh_index 0
+mesh_coarsening_exponent 1
+mesh_refining_exponent -1
+mesh_update_basis 4
+poll_update_basis 2
+anisotropic_mesh 1
+h_norm L2
+rho 0.1
+speculative_search 1
+snap_to_bounds 1
+model_search 0
+model_eval_sort 0
+model_eval_sort_cautious 0
+model_proj_to_mesh 1
+model_search_optimistic 1
+model_max_trial_pts 4
+model_max_Y_size 500
+model_min_Y_size -1
+model_use_WP 0
+model_radius_factor 2
+has_sgte 0
+use_granular_variables 1
+user_param 2
+
+RUN SEED # OK

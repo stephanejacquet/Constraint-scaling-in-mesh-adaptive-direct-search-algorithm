@@ -1,0 +1,34 @@
+#include "Rastrigin.hpp"
+
+/*----------------------------------------------*/
+/*                  constructor                 */
+/*----------------------------------------------*/
+Rastrigin::Rastrigin ( void )
+  : Problem ( "RASTRIGIN" , "RASTRIGIN" , "xe.txt" , 2 , 1 ) {
+
+  NOMAD::Point x0 ( 2 );
+  x0[0] = x0[1] = -5.12;
+
+  set_bbot ( 0, NOMAD::OBJ );
+  set_x0   ( x0  );
+  set_f_lb ( 0.0 );
+
+  set_bounds ( NOMAD::Point ( 2 , -5.12 ) , NOMAD::Point ( 2 , 5.12 ) );
+
+  add_keyword ( "published" );
+  add_keyword ( "mads_dfo_paper" );
+}
+
+/*----------------------------------------------*/
+/*                   evaluation                 */
+/*----------------------------------------------*/
+bool Rastrigin::eval_x ( NOMAD::Eval_Point & x          ,
+			 bool              & count_eval   ) const {
+  x.set_bb_output ( 0 , 20
+		    + pow ( x[0].value() , 2 )
+		    + pow ( x[1].value() , 2 )
+		    - 10*cos(6.283185307*x[0].value())
+		    - 10*cos(6.283185307*x[1].value()) );
+  count_eval = true;
+  return true;
+}

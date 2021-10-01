@@ -1,0 +1,93 @@
+test
+Warning: {
+	Initial mesh size for variable 3 has been arbitrarily fixed to 1.
+	 In the absence of bounds and initial values different than zero,
+	 it is recommended to explicitely provide this parameter.
+} 
+Warning: {
+	Model use is forcefully disabled.
+} 
+
+NOMAD - version 3.8.0 has been created by {
+	Charles Audet        - Ecole Polytechnique de Montreal
+	Sebastien Le Digabel - Ecole Polytechnique de Montreal
+	Christophe Tribes    - Ecole Polytechnique de Montreal
+} 
+
+The copyright of NOMAD - version 3.8.0 is owned by {
+	Sebastien Le Digabel - Ecole Polytechnique de Montreal
+	Christophe Tribes    - Ecole Polytechnique de Montreal
+} 
+
+NOMAD version 3 is a new version of NOMAD v1 and v2, it has been funded by AFOSR and Exxon Mobil.
+NOMAD v1 and v2 were created and developed by Mark Abramson, Charles Audet, Gilles Couture and John Dennis Jr., and were funded by AFOSR and Exxon Mobil.
+
+Download  : www.gerad.ca/nomad
+License   : '$NOMAD_HOME/src/lgpl.txt'
+User guide: '$NOMAD_HOME/doc/user_guide.pdf'
+Examples  : '$NOMAD_HOME/examples'
+Tools     : '$NOMAD_HOME/tools'
+
+Please report bugs to nomad@gerad.ca
+
+Seed: 0
+
+MADS run {
+
+	BBE	OBJ
+
+	   1	1.2326800000e+06
+	   3	1.0023500000e+06
+	   4	4.9714300000e+05
+	   6	1.7419500000e+05
+	  66	1.0944800000e+05
+	  82	42351.2000000000
+	 126	28843.6000000000
+	 167	24596.4000000000
+	 188	16858.5000000000
+	 212	16569.9000000000
+	 246	14993.4000000000
+	 262	10254.5000000000
+	 303	9351.6500000000
+	 317	8911.5800000000
+	 333	8880.9600000000
+	 339	8876.0000000000
+	 372	8541.3200000000
+	 384	8343.9800000000
+	 396	8262.1300000000
+	 403	7506.0300000000
+	 461	7431.3300000000
+	 479	7386.1300000000
+	 491	7348.0100000000
+	 492	7324.4500000000
+	 504	7159.9300000000
+	 526	7135.4700000000
+	 574	7098.0300000000
+	 582	7095.5100000000
+	 608	7082.7900000000
+	 622	7082.4200000000
+	 637	7041.9300000000
+	 667	7028.0200000000
+	 693	7025.8600000000
+	 735	7025.4900000000
+	 765	7025.2200000000
+	 767	7024.0900000000
+	 770	7022.7100000000
+	 771	7018.6000000000
+	 780	7018.3800000000
+	 821	7016.7000000000
+	 869	7016.1300000000
+	 873	7015.6300000000
+	 891	7015.3200000000
+	 904	7014.6700000000
+	 941	7014.6100000000
+	 944	7014.5900000000
+	 973	7014.5800000000
+	 992	7014.4800000000
+	1000	7014.4800000000
+
+} end of run (max number of blackbox evaluations)
+
+blackbox evaluations                     : 1000
+best infeasible solution (min. violation): ( 18.98720629 9.385396272 61.48707858 27.135539 ) h=2.23258e-07 f=7014.54
+best feasible solution                   : ( 18.98723387 9.385382923 61.48691617 27.134823 ) h=0 f=7014.48

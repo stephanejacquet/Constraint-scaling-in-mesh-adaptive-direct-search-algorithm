@@ -1,0 +1,8 @@
+ LIST  26 A1.out
+ BAS    1 A1.bas
+ BCF   11 A1.bcf
+ OC    10 A1.oc
+DATA  30  A1.hed
+ PCG   12 A1.pcg
+WEL   13  A1.wel
+ RCH   20 A1.rch

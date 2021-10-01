@@ -1,0 +1,26 @@
+DIMENSION      7
+BB_EXE         bb.exe
+BB_OUTPUT_TYPE OBJ
+
+X0             x0.txt
+
+LOWER_BOUND    * 0.0
+UPPER_BOUND    * 6.283185308
+
+MAX_BB_EVAL 7000
+
+model_search yes
+model_eval_sort yes
+
+# lh_search 500 0
+# opportunistic_lh no
+# vns_search yes
+
+display_stats bbe ( sol ) obj
+# stats_file stats.txt bbe obj
+
+# solution_file sol.txt
+
+# display_degree 2
+
+tmp_dir /tmp
